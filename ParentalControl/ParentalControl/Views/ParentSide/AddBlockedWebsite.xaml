@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customs="clr-namespace:ParentalControl.UserControls"
+             x:Class="ParentalControl.Views.AddBlockedWebsite">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
+            <customs:OutlinedMaterialEntry Text="{Binding Name, Mode=TwoWay}" PlaceholderText="Name"/>
+            <customs:OutlinedMaterialEntry Text="{Binding URL, Mode=TwoWay}" PlaceholderText="URL"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand" CornerRadius="15"></Button>
+                <Button Text="Block" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" CornerRadius="15"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="ParentalControl.Views.SelectDevicePage" >
+    <ContentPage.Content>
+        <StackLayout WidthRequest="300" VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+            <Lottie:AnimationView Animation="TestAnim.json" 
+                                  AutoPlay="True" 
+                                  RepeatMode="Infinite" 
+                                  RepeatCount="2" 
+                                  HeightRequest="200"/>
+            <Label Text="Which One Is The Current Device" FontFamily="MontserratR" FontSize="25" Margin="10,0,0,0" TextColor="Gray" HorizontalTextAlignment="Center"/>
+            <Button x:Name="ParentDevice" 
+                    Text="Parent Device" 
+                    TextTransform="None"
+                    FontSize="28" FontFamily="MontserratM"
+                    HeightRequest="100"  
+                    WidthRequest="300" 
+                    BorderColor="LightBlue" 
+                    CornerRadius="20" 
+                    BorderWidth="5" 
+                    Command="{Binding ParentDeviceCommand}"/>
+            <Button x:Name="ChildDevice" 
+                    Text="Child Device"
+                    TextTransform="None"
+                    FontSize="28" FontFamily="MontserratM"
+                    HeightRequest="100"  
+                    WidthRequest="300" 
+                    BorderColor="LightBlue" 
+                    CornerRadius="20" 
+                    BorderWidth="5" 
+                    Command="{Binding ChildDeviceCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

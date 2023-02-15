@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParentalControl.Views.ParentSide.CommunicationActivitiesOptionsPage"
+             xmlns:local="clr-namespace:ParentalControl.ViewModels"
+             xmlns:materialframe="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:ct="http://xamarin.com/schemas/2020/toolkit" xmlns:daop="clr-namespace:ParentalControl.ViewModels">
+    <ContentPage.Content>
+        <StackLayout Spacing="10" Margin="10">
+            <materialframe:MaterialFrame Padding="0"
+                                             CornerRadius="20"
+                                             MaterialTheme="Acrylic" Elevation="4"
+                                             LightThemeBackgroundColor="#F1F1F1"
+                                             >
+                <Grid x:DataType="daop:DAOPViewModel" 
+                  ct:TouchEffect.Command="{Binding CallogsCommand}"
+                  ct:TouchEffect.PressedAnimationDuration="140"
+                  ct:TouchEffect.AnimationDuration="300"
+                  ct:TouchEffect.PressedScale="1.02"
+                  ct:TouchEffect.PressedTranslationY="2"
+                  
+                  ct:TouchEffect.PressedBackgroundColor="SkyBlue"
+                  BackgroundColor="Transparent" Padding="10" ct:CornerRadiusEffect.CornerRadius="20">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame HeightRequest="40" 
+                       WidthRequest="40" 
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       HasShadow="True" 
+                       Padding="0" 
+                       BackgroundColor="White" 
+                       CornerRadius="20">
+                        <Image Source="Apps.png" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                    </Frame>
+                    <StackLayout Grid.Column="1" Spacing="0">
+                        <Label Text="Call Logs" TextColor="Black" FontSize="20" FontFamily="MontserratM" />
+                        
+                    </StackLayout>
+                    <Image Source="arr1" Grid.Column="2" VerticalOptions="Center" HeightRequest="40"/>
+                    
+                </Grid>
+            </materialframe:MaterialFrame>
+            <Frame  CornerRadius="10" HasShadow="True" Padding="0">
+                <Button x:Name="OnlineActBt" Text="Call History" HeightRequest="90" ImageSource="Web.png" ContentLayout="Left,-10"
+                        BackgroundColor="White" TextColor="Black" FontFamily="Lobster-Regular" FontSize="20" TextTransform="None"/>
+            </Frame>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

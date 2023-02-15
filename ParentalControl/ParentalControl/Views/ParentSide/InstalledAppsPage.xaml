@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ParentalControl.ViewModels.ApplicationActivitiesViewModels" xmlns:model="clr-namespace:ParentalControl.Models"
+             x:Class="ParentalControl.Views.ParentSide.InstalledAppsPage" xmlns:ct="http://xamarin.com/schemas/2020/toolkit" xmlns:localCon="clr-namespace:ParentalControl.Converters"
+             x:Name="InstalledAppsCP" 
+             BackgroundColor="White" >
+    <Shell.TitleView>
+        <StackLayout VerticalOptions="Center" Padding="0,15,0,0">
+            <Label FontSize="20" FontFamily="MontserratSB" Text="Installed Applications" TextColor="Black"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <localCon:BooleanConverter x:Key="BooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <!--Search plus Number of apps-->
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <RefreshView x:DataType="local:InstalledApplicationsViewModel" Command="{Binding LoadApplicationsCommand}" Padding="10"
+                     IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="BlockedWebsitesListView"
+                ItemsSource="{Binding InstalledApplications}"
+                SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="0"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<Frame Padding="1" HasShadow="False" CornerRadius="11" BackgroundColor="Transparent">
+                            <Frame HasShadow="True" Padding="0" CornerRadius="10">
+                                
+                            </Frame>
+                            
+                        </Frame>-->
+                        <Grid x:DataType="model:Application" BackgroundColor="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame CornerRadius="35" HeightRequest="15" WidthRequest="15" BackgroundColor="Gray" VerticalOptions="Center" HorizontalOptions="Center">
+
+                            </Frame>
+                            <StackLayout Padding="10"  Grid.Column="1">
+                                <Label Text="{Binding Name}" TextColor="Black"
+                                    LineBreakMode="NoWrap" FontFamily="MontserratM"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                <Label Text="{Binding PackageName}" TextColor="Black"
+                                    LineBreakMode="WordWrap" FontFamily="MontserratR"
+                                    Style="{DynamicResource ListItemDetailTextStyle}" 
+                                    FontSize="13" />
+                                <Frame BackgroundColor="Red" IsVisible="{Binding IsBlocked}"
+                                       VerticalOptions="End" Margin="0,10" 
+                                       HorizontalOptions="Start" 
+                                       Padding="6,2" CornerRadius="5">
+                                    <Label Text="Blocked" FontAttributes="Bold" TextColor="White"
+                                        LineBreakMode="NoWrap" FontFamily="MontserratSB"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="13" />
+                                </Frame>
+                            </StackLayout>
+                            <Grid Grid.Column="2" IsVisible="{Binding IsBlocked,Converter={StaticResource BooleanConverter}}"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="End" HeightRequest="50"
+                                   ct:TouchEffect.PressedAnimationDuration="100"
+                                   ct:TouchEffect.PressedBackgroundColor="Blue"
+                                  ct:CornerRadiusEffect.CornerRadius="30"
+                                    Padding="0">
+                                <Image Source="block"/>
+                                
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:InstalledApplicationsViewModel}}, Path=BlockAppCommand}"	
+                                    CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            <Grid Grid.Column="2" IsVisible="{Binding IsBlocked}"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="End" HeightRequest="30"
+                                   ct:TouchEffect.PressedAnimationDuration="100"
+                                   ct:TouchEffect.PressedBackgroundColor="Blue"
+                                  ct:CornerRadiusEffect.CornerRadius="30"
+                                    Padding="10">
+                                <Image Source="unblock"/>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:InstalledApplicationsViewModel}}, Path=BlockAppCommand}"	
+                                    CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            <!--<Grid.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:InstalledApplicationsViewModel}}, Path=BlockAppCommand}"		
+                                    CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>-->
+                            <Line Stroke="LightGray" X1="0" X2="600" Y1="0" Y2="0" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" StrokeThickness="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

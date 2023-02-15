@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1023634330765-me98bj4ik8h6dmduireee56jgm1mnr4p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1023634330765-me98bj4ik8h6dmduireee56jgm1mnr4p</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB115SFoD-K8N6QMr8Tm0xV_UBz005aI04</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1023634330765</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.companyname.ParentalControl</string>
+	<key>PROJECT_ID</key>
+	<string>parental-control-9c57b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>parental-control-9c57b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1023634330765:ios:515d2ef3a04226cc343ec4</string>
+	<key>DATABASE_URL</key>
+	<string>https://parental-control-9c57b-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

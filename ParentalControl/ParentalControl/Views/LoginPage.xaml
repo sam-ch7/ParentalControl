@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Customs="clr-namespace:ParentalControl.UserControls"
+             mc:Ignorable="d"
+             x:Class="ParentalControl.Views.LoginPage"
+             Shell.NavBarIsVisible="False" >
+    <ContentPage.Content>
+        <Grid>
+            <!--<Frame HeightRequest="200" VerticalOptions="Start" Padding="0">
+                --><!--<Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#0059D4"
+                          Offset="0.5"/>
+                        <GradientStop Color="#26B9FE"
+                          Offset="0.9"/>
+                    </LinearGradientBrush>
+                </Frame.Background>--><!--
+                
+            </Frame>-->
+            <!--<Image Source="Stripes.png" WidthRequest="400" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-1"/>-->
+            <StackLayout Padding="0,0,0,50" VerticalOptions="End" HorizontalOptions="Center"  Margin="15,0,15,0">
+                <Customs:OutlinedMaterialEntry x:Name="Email" Text="{Binding Model.Email}"  PlaceholderText="Email" BorderColor="#0059D4"
+                                                 ErrorText="Invalid Email" EmailValidationEnabled="True" />
+                <Customs:OutlinedMaterialEntry x:Name="Password" Text="{Binding Model.Password}"  PlaceholderText="Password" BorderColor="#0059D4"
+                                                 ErrorText="Invalid Email" IsPassword="True"/>
+                <Customs:Hyperlink Command="{Binding LoginCommand}" Text="Forgot Password" HorizontalOptions="End" />
+                <Button     Text="Sign In" Margin="0,20"
+                            TextTransform="None" 
+                            Command="{Binding LoginCommand}" 
+                            TextColor="White"
+                            CornerRadius="15" 
+                            BorderWidth="2" FontFamily="MontserratSB"
+                            FontSize="20" BackgroundColor="#0264FF" />
+                <Line Stroke="LightGray" X1="0" X2="600" Y1="0" Y2="0" HorizontalOptions="CenterAndExpand" StrokeThickness="5"/>
+                <Button     Text="Sign Up" Margin="0,20"
+                            TextTransform="None" 
+                            Command="{Binding SignUpPageCommand}" 
+                            TextColor="White"
+                            CornerRadius="15" 
+                            BorderWidth="2" FontFamily="MontserratSB"
+                            FontSize="20" BackgroundColor="#092F42" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

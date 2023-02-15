@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ParentalControl.ViewModels" xmlns:model="clr-namespace:ParentalControl.Models" xmlns:localCon="clr-namespace:ParentalControl.Converters"
+             x:Class="ParentalControl.Views.ParentSide.ChildDevicesPage" BackgroundColor="White" 
+             xmlns:ct="http://xamarin.com/schemas/2020/toolkit" xmlns:Lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:materialframe="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <localCon:BooleanConverter x:Key="BooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Shell.TitleView>
+        <StackLayout VerticalOptions="Center" Padding="0,15,0,0">
+            <Label FontSize="20" FontFamily="MontserratSB" Text="Child Devices" TextColor="Black"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <RefreshView x:DataType="local:ChildDevicesViewModel" Command="{Binding LoadChildDevicesCommand}" 
+                     IsRefreshing="{Binding IsBusy, Mode=TwoWay}" >
+            <StackLayout>
+                <Lottie:AnimationView Animation="Devices.json" 
+                                  AutoPlay="True" 
+                                  RepeatMode="Infinite" 
+                                  RepeatCount="2" 
+                                  HeightRequest="200"/>
+
+                <Label Text="Manage your connected children's devices" FontFamily="MontserratR" FontSize="18" Margin="10,0,0,0" TextColor="Black" HorizontalTextAlignment="Center"/>
+
+                <CollectionView x:Name="BlockedWebsitesListView"
+                ItemsSource="{Binding ChildDevices}" HorizontalOptions="Center"
+                SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="0" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <!--<Frame HasShadow="False"  Padding="2" HeightRequest="100" BackgroundColor="Transparent" ct:ShadowEffect.Color="Black" >
+                            <Frame Padding="0" CornerRadius="15">
+                                
+                            </Frame>
+                            
+                        </Frame>-->
+                            <Grid BackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" Padding="10,20">
+                                <materialframe:MaterialFrame CornerRadius="15" Padding="0"  MaterialTheme="Acrylic" Elevation="4"
+                                             LightThemeBackgroundColor="#F1F1F1">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="10" x:DataType="model:ChildDevice" BackgroundColor="White" 
+                              ct:CornerRadiusEffect.CornerRadius="15"  
+                                  
+                                  ct:ShadowEffect.Radius="15" 
+                                  ct:ShadowEffect.OffsetY="-5" 
+                                  ct:ShadowEffect.OffsetX="5"
+                                  
+                                  ct:TouchEffect.PressedAnimationDuration="140"
+                                  ct:TouchEffect.AnimationDuration="300"
+                                  ct:TouchEffect.PressedScale="1.02"
+                                  ct:TouchEffect.PressedTranslationY="-2"
+                  
+                                  ct:TouchEffect.PressedBackgroundColor="AliceBlue">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="3*"/>
+                                            <RowDefinition Height="4*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="7*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Padding="0" WidthRequest="100" HasShadow="True" BorderColor="{StaticResource Primary}"
+                                           HeightRequest="100" Grid.RowSpan="2" CornerRadius="50"
+                                           HorizontalOptions="Center" VerticalOptions="Center">
+
+                                        </Frame>
+                                        <Frame HorizontalOptions="Start" HasShadow="False"  Grid.Column="1"
+                                       VerticalOptions="Start"
+                                       WidthRequest="50" Padding="0"  CornerRadius="3">
+                                            <Image Source="roid.png" VerticalOptions="FillAndExpand"/>
+                                        </Frame>
+
+                                        <StackLayout VerticalOptions="StartAndExpand" Grid.Row="1" Spacing="0" Grid.Column="1">
+                                            <Label Text="{Binding Name}" TextColor="{StaticResource Primary}"
+                                    LineBreakMode="NoWrap" FontFamily="MontserratM"
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Model}" TextColor="Gray"
+                                    LineBreakMode="NoWrap" FontFamily="MontserratR"
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="13" />
+                                                <Frame Grid.Column="2" HasShadow="False" Grid.Row="0" BackgroundColor="{StaticResource Primary}" IsVisible="{Binding IsLoggedIn}"
+                                       VerticalOptions="Start" 
+                                       HorizontalOptions="End" 
+                                       Padding="2,0" CornerRadius="3">
+                                                    <Label Text="Logged In" HorizontalOptions="Center" FontFamily="MontserratSB" TextColor="White"/>
+                                                </Frame>
+                                                <Frame Grid.Column="2" HasShadow="False" Grid.Row="0" BackgroundColor="Red" IsVisible="{Binding IsLoggedIn,Converter={StaticResource BooleanConverter}}"
+                                       VerticalOptions="Start" 
+                                       HorizontalOptions="End" 
+                                       Padding="2,0" CornerRadius="3">
+                                                    <Label Text="Logged Out" HorizontalOptions="Center" FontFamily="MontserratSB" TextColor="White"/>
+                                                </Frame>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <Image Source="arr" Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" HeightRequest="50" WidthRequest="50"/>
+                                        <Grid.GestureRecognizers >
+                                            <TapGestureRecognizer 
+                                        NumberOfTapsRequired="1"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type local:ChildDevicesViewModel}}, Path=ViewChildDeviceCommand}"		
+                                        CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </Grid.GestureRecognizers>
+                                        <!--<Button x:Name="BlockBt" Text="{Binding Action}" Clicked="BlockBt_Clicked" />-->
+                                    </Grid>
+                                </materialframe:MaterialFrame>
+                                
+                            </Grid>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

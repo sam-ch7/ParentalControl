@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "366190214392",
+    "firebase_url": "https://parentalcontrol-5f1a4-default-rtdb.firebaseio.com",
+    "project_id": "parentalcontrol-5f1a4",
+    "storage_bucket": "parentalcontrol-5f1a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:366190214392:android:4c8e725c9129da10408f0d",
+        "android_client_info": {
+          "package_name": "com.companyname.parentalcontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "366190214392-i6h4dgkkrvq46rc72sns80btdh94nan7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByM4WnZGEr1ECg2LErtCkQRRUEjNDmOM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "366190214392-i6h4dgkkrvq46rc72sns80btdh94nan7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

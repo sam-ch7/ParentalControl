@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="this"
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParentalControl.UserControls.Hyperlink">
+  <ContentView.Content>
+        <StackLayout ><!--Margin="{Binding Margin}"-->
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Text,Source={x:Reference this}}" FontSize="19"
+                              TextColor="#26B9FE" FontFamily="MontserratM"
+                              >
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Command,Source={x:Reference this}}" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

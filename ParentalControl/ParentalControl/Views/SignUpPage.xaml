@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParentalControl.Views.SignUpPage"
+             xmlns:XCT="clr-namespace:ParentalControl.Behaviors" xmlns:local="clr-namespace:ParentalControl.Converters" xmlns:usercontrols="clr-namespace:ParentalControl.UserControls">
+    <ContentPage.Resources>
+        <local:BooleanConverter x:Key="BooleanConverter"></local:BooleanConverter>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="300">
+            <usercontrols:OutlinedMaterialEntry x:Name="Firstname" Text="{Binding Model.Firstname}" PlaceholderText="Firstname" 
+                                                 ErrorText="Test"/>
+            <usercontrols:OutlinedMaterialEntry x:Name="Lastname" Text="{Binding Model.Lastname}" PlaceholderText="Lastname"
+                                                 ErrorText="Test" />
+            <usercontrols:OutlinedMaterialEntry x:Name="Email" Text="{Binding Model.Email}" PlaceholderText="Email"
+                                                 ErrorText="Test" EmailValidationEnabled="True" HasError="{Binding BindingContext.EmailValid,
+                Source={x:Reference Email},
+                Mode=OneWayToSource,
+                Converter={StaticResource BooleanConverter}}">
+            </usercontrols:OutlinedMaterialEntry>
+            <!--<Label Text="Invalid Email" IsVisible="{Binding Source={x:Reference EmailBehavior},Path=IsValid,Converter={StaticResource BooleanConverter}}" TextColor="Black"/>-->
+            <usercontrols:OutlinedMaterialEntry x:Name="Password" Text="{Binding Model.Password}" PlaceholderText="Password"
+                                                 ErrorText="Test" IsPassword="True" />
+            <usercontrols:OutlinedMaterialEntry x:Name="ConfirmPassword" PlaceholderText="Confirm Password"
+                                                 ErrorText="Test" IsPassword="True" />
+            <Button VerticalOptions="Center" Text="Sign In" TextTransform="None" Command="{Binding SignUpCommand}" CornerRadius="30" FontSize="28"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
